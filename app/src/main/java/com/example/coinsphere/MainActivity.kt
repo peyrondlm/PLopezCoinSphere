@@ -21,8 +21,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -55,8 +53,16 @@ fun HomeScreen() {
     val coins = listOf(
         CoinModel("Bitcoin", "asdf", 109797.37),
         CoinModel("Ethereum", "asdf", 4321.21),
-        CoinModel("Tether", "asdf", 1.0000)
-
+        CoinModel("Tether", "asdf", 1.0000),
+        CoinModel("XRP", "asdf", 2.8100),
+        CoinModel("BNB", "asdf", 845.0000),
+        CoinModel("Solana", "asdf", 201.8500),
+        CoinModel("USDC", "asdf", 0.9998),
+        CoinModel("Dogecoin", "asdf", 0.1320),
+        CoinModel("TRON", "asdf", 0.3630),
+        CoinModel("Cardano", "asdf", 0.9213),
+        CoinModel("Litecoin", "asdf", 117.78),
+        CoinModel("Chainlink", "asdf", 25.09)
     )
     Column(
         modifier = Modifier
@@ -183,22 +189,34 @@ fun HomeScreen() {
         )
         // Monedas
         LazyColumn (
-
+            modifier = Modifier
+                .padding(start = 20.dp, top = 5.dp, end = 20.dp, bottom = 20.dp)
         ){
-            items(items = coins) { coin ->
+            items(items = coins.withIndex().toList()) { (index, coin) ->
                 Row (
                     modifier = Modifier
                         .padding(10.dp),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ){
-                    Row {
+                    Row (
+                        modifier = Modifier
+                            .weight(1f)
+                    ){
                         Text(
-                            text = coin.coinName
+                            text = "${index + 1}",
+                            color = TextMain,
+                            modifier = Modifier
+                                .padding(end = 10.dp)
+                        )
+                        Text(
+                            text = coin.coinName,
+                            color = TextMain
                         )
                     }
                     Row {
                         Text(
-                            text = "$${coin.coinPrice}"
+                            text = "$${coin.coinPrice}",
+                            color = TextMain
                         )
                     }
                 }
