@@ -34,6 +34,7 @@ import com.example.coinsphere.ui.theme.Surface
 import com.example.coinsphere.ui.theme.TextDim
 import com.example.coinsphere.ui.theme.TextMain
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
